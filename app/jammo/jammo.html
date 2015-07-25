@@ -1,0 +1,21 @@
+<p>This is the partial for jammo.</p>
+
+<!-- XXX -->
+<div ng-controller="JammoCtrl">
+  <input     ng-model="drum"
+ type="checkbox">
+
+
+
+</br>
+<span ng-bind="drum"></span>
+
+</div>
+
+
+
+
+<p>
+  Showing of 'interpolate' filter:
+  {{ 'Current version is v%VERSION%.' | interpolate }}
+</p>
