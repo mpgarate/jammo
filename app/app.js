@@ -12,6 +12,8 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
 
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var context = new AudioContext();
 
 var timer = new Worker('workers/timer.js');
 
@@ -22,19 +24,19 @@ var sample_score = {
     {
       "name": "kick",
       "notes": [
-        true, true, false, false, false, true, false, false
+        true, false, true, false, true, false, true, false
       ]
     },
     {
       "name": "snare",
       "notes": [
-        false, false, true, false, false, false, true, false
+        true, false, true, false, true, false, true, false
       ]
     },
     {
       "name": "hihat",
       "notes": [
-        false, true, false, true, false, true, false, true
+        true, false, true, false, true, false, true, false
       ]
     }
   ]

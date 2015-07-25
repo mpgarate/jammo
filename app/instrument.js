@@ -4,18 +4,46 @@ var Instrument = (function() {
   var Instrument = function () {};
 
   var instrument_names = ["kick", "snare", "hihat"];
-  var instruments = {};
+  var instrument_buffers = {};
 
   for (var i = 0; i < instrument_names.length; i++) {
     var name = instrument_names[i];
-    instruments[name] = new Audio("audio/" + name + ".wav");
-    console.log(instruments);
+    loadAudioFile(name);
+  }
+
+  function loadAudioFile(name) {
+    var url = "audio/" + name + ".wav";
+
+    var request = new XMLHttpRequest();
+    request.open('GET', url, true);
+    request.responseType = 'arraybuffer';
+
+    // Decode asynchronously
+    request.onload = function() {
+      console.log("loaded " + name);
+      context.decodeAudioData(request.response, function(buffer) {
+        console.log("set instrument buffer for " + name);
+        instrument_buffers[name] = buffer;
+      });
+    }
+    request.send();
   }
 
   Instrument.playByName = function(name) {
-    console.log(name);
-    console.log(instruments);
-    instruments[name].play();
+    console.log("play: " + name);
+    var buffer = instrument_buffers[name];
+
+    if (typeof buffer === undefined) {
+      return;
+    }
+
+    console.log(buffer);
+    console.log(typeof buffer);
+
+    var source = context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(context.destination);
+    source.start();
   }
 
   return Instrument;
