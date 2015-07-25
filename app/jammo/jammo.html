@@ -2,18 +2,20 @@
 
 <!-- XXX -->
 <div ng-controller="JammoCtrl">
-  <input     ng-model="drum"
- type="checkbox">
+
+  <input  ng-repeat="beat in beats"
+    ng-model="beat.selected"
+    type="checkbox"> <br/></input>
 
 
+    <span ng-repeat="beat in beats"
+    ng-model="beat.selected"
+    ng-bind="beat.selected"> <br/> </span>
 
 </br>
-<span ng-bind="drum"></span>
+
 
 </div>
-
-
-
 
 <p>
   Showing of 'interpolate' filter:
