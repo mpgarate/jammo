@@ -1,0 +1,16 @@
+{
+  "instruments": [
+    {
+      "name": "kick",
+      "notes": [
+        true, false, false, false, true, false, false, false
+      ]
+    },
+    {
+      "name": "snare",
+      "notes": [
+        false, false, true, false, false, false, true, false
+      ]
+    }
+  ]
+}
