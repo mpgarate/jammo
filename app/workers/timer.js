@@ -25,9 +25,6 @@ function start_timer(){
     var timer = accurateInterval(60000 / 120, function() {
       postMessage("beat");
     });
-    //  var timer = accurateInterval(250 * 15 / 126, function() {
-    //   postMessage("beat");
-    // });
   }
 };
 start_timer();

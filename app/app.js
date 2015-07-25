@@ -44,7 +44,6 @@ var sample_score = {
 noteQueue.setScore(sample_score);
 
 timer.onmessage = function(e) {
-  console.log('Worker said: ', e.data);
   noteQueue.playNext();
 };
 

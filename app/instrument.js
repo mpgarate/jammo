@@ -20,9 +20,7 @@ var Instrument = (function() {
 
     // Decode asynchronously
     request.onload = function() {
-      console.log("loaded " + name);
       context.decodeAudioData(request.response, function(buffer) {
-        console.log("set instrument buffer for " + name);
         instrument_buffers[name] = buffer;
       });
     }
@@ -30,15 +28,11 @@ var Instrument = (function() {
   }
 
   Instrument.playByName = function(name) {
-    console.log("play: " + name);
     var buffer = instrument_buffers[name];
 
     if (typeof buffer === undefined) {
       return;
     }
-
-    console.log(buffer);
-    console.log(typeof buffer);
 
     var source = context.createBufferSource();
     source.buffer = buffer;
