@@ -1,23 +1,22 @@
 <p>This is the partial for jammo.</p>
 
-<!-- XXX -->
 <div ng-controller="JammoCtrl">
 
-  <input  ng-repeat="beat in beats"
-    ng-model="beat.selected"
-    type="checkbox"> <br/></input>
+  <input ng-repeat="beat in beats"
+  ng-model="beat.selected"
+  ng-click="updateScore()"
+  type="checkbox"> <br/></input>
 
 
-    <span ng-repeat="beat in beats"
+  <span ng-repeat="beat in beats"
     ng-model="beat.selected"
     ng-bind="beat.selected"> <br/> </span>
 
-</br>
-
+  </br>
 
 </div>
 
 <p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
+Showing of 'interpolate' filter:
+{{ 'Current version is v%VERSION%.' | interpolate }}
 </p>

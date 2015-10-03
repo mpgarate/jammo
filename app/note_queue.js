@@ -6,7 +6,7 @@ var NoteQueue = (function() {
     this.notes = [];
   };
 
-  var SCORE_LENGTH = 8;
+  var SCORE_LENGTH = 4;
 
   NoteQueue.prototype.playNext = function() {
     for (var i = 0; i < this.score.instruments.length; i++) {

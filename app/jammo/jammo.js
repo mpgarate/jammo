@@ -24,6 +24,46 @@ angular.module('myApp.jammo', ['ngRoute'])
     selected : false
   };
 
-  $scope.beats= [beat1, beat2, beat3, beat4];
+  $scope.beats = [beat1, beat2, beat3, beat4];
 
+  $scope.updateScore = function() {
+
+    var boolean_beats = $scope.beats.map(function(beat) {
+      return beat.selected;
+    });
+
+    playScore(boolean_beats);
+  }
 }]);
+
+function playScore(beats) {
+
+  console.log(beats);
+
+  var score = {
+    "instruments": [
+    {
+      "name": "kick",
+      "notes": beats
+    },
+    {
+      "name": "snare",
+      "notes": [
+        false, false, false, false
+        ]
+    },
+    {
+      "name": "hihat",
+      "notes": [
+        false, false, false, false
+        ]
+    }
+    ]
+  }
+
+  noteQueue.setScore(score);
+
+  timer.onmessage = function(e) {
+    noteQueue.playNext();
+  };
+}
